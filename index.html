@@ -6,6 +6,9 @@
   <title>Guía de setup — paso a paso</title>
   <meta name="description" content="Checklist completa para montar un sitio con GitHub Pages, Cloudflare, VSCode y Git desde cero.">
   <meta name="author" content="meowrhino.studio">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,7 +18,7 @@
   <header class="hero">
     <h1>Guía de setup</h1>
     <p class="subtitle">Checklist para montar un sitio con GitHub Pages, Cloudflare, VSCode y Git.</p>
-    <p class="meta">Última actualización: febrero 2026</p>
+    <p class="meta">Última actualización: marzo 2026</p>
   </header>
 
   <section class="stack">
@@ -53,108 +56,359 @@
       </div>
     </section>
 
-    <!-- 2. GITHUB PAGES -->
+    <!-- 2. INSTALAR VSCODE -->
     <section class="item" id="s2">
-      <h2 class="item-title">2 &middot; Activar GitHub Pages</h2>
+      <h2 class="item-title">2 &middot; Instalar Visual Studio Code</h2>
       <div class="content">
-        <p>GitHub Pages convierte tu repo en un sitio web gratis.</p>
+        <p>VSCode es el editor de código que usaremos para editar los archivos del sitio.</p>
 
         <label class="check">
           <input type="checkbox" data-step="2-1">
-          <span>Ir a <strong>Settings</strong> del repo (pestaña de arriba)</span>
+          <span>Descargar desde <strong>code.visualstudio.com</strong></span>
         </label>
 
         <label class="check">
           <input type="checkbox" data-step="2-2">
-          <span>En el menú lateral, click en <strong>Pages</strong></span>
+          <span>Instalar (en Mac: arrastrar a Aplicaciones)</span>
         </label>
 
         <label class="check">
           <input type="checkbox" data-step="2-3">
-          <span>En <strong>Source</strong>, seleccionar <strong>Deploy from a branch</strong></span>
+          <span>Abrir VSCode</span>
         </label>
 
-        <label class="check">
-          <input type="checkbox" data-step="2-4">
-          <span>Rama: <strong>main</strong>, carpeta: <strong>/ (root)</strong> &rarr; <strong>Save</strong></span>
-        </label>
+        <h3>Orientarse en la barra lateral</h3>
+        <p>La barra lateral izquierda tiene varios iconos. Los importantes por ahora:</p>
 
-        <label class="check">
-          <input type="checkbox" data-step="2-5">
-          <span>Esperar 1-2 minutos y refrescar &mdash; aparecerá la URL <code>usuario.github.io/mi-sitio</code></span>
-        </label>
-      </div>
-    </section>
+        <div class="icon-list">
+          <div class="icon-item important">
+            <span class="icon-badge yes">usar</span>
+            <strong>Explorer</strong>
+            <span class="muted">&mdash; primer icono. Aquí ves y abres los archivos del proyecto.</span>
+          </div>
+          <div class="icon-item important">
+            <span class="icon-badge yes">usar</span>
+            <strong>Source Control</strong>
+            <span class="muted">&mdash; icono con ramitas. Desde aquí haces commit y subes cambios.</span>
+          </div>
+          <div class="icon-item important">
+            <span class="icon-badge yes">usar</span>
+            <strong>Extensions</strong>
+            <span class="muted">&mdash; cuadraditos. Para instalar extensiones como Live Server.</span>
+          </div>
+        </div>
 
-    <!-- 3. DOMINIO PERSONALIZADO -->
-    <section class="item" id="s3">
-      <h2 class="item-title">3 &middot; Configurar dominio personalizado</h2>
-      <div class="content">
-        <p>Si tienes un dominio propio, lo conectamos aquí.</p>
-
-        <label class="check">
-          <input type="checkbox" data-step="3-1">
-          <span>En <strong>Settings &rarr; Pages</strong>, escribir tu dominio en <strong>Custom domain</strong></span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="3-2">
-          <span>Click en <strong>Save</strong></span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="3-3">
-          <span>Marcar <strong>Enforce HTTPS</strong> (puede tardar unos minutos en habilitarse)</span>
-        </label>
-
-        <div class="note">
-          <p>Si "Enforce HTTPS" aparece en gris, espera a que los DNS propaguen (paso 4) y vuelve a intentar.</p>
+        <div class="icon-list" style="margin-top:4px;">
+          <div class="icon-item ignore">
+            <span class="icon-badge no">ignorar</span>
+            <strong>Run and Debug, Testing, Accounts, Settings</strong>
+            <span class="muted">&mdash; no los necesitas por ahora.</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. CLOUDFLARE + DNS -->
+    <!-- 3. INSTALAR GIT -->
+    <section class="item" id="s3">
+      <h2 class="item-title">3 &middot; Instalar y configurar Git</h2>
+      <div class="content">
+        <p>Git es la herramienta que permite subir los cambios al repositorio de GitHub.</p>
+
+        <label class="check">
+          <input type="checkbox" data-step="3-1">
+          <span>Descargar desde <strong>git-scm.com</strong> (en Mac suele venir preinstalado)</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="3-2">
+          <span>Instalar con las opciones por defecto</span>
+        </label>
+
+        <h3>Configurar identidad</h3>
+        <p>Abrir la <strong>terminal</strong> en VSCode (<code>Ctrl+Ñ</code> o <code>Cmd+Ñ</code> en Mac) y ejecutar:</p>
+
+        <pre class="mono">git config --global user.name "Tu Nombre"
+git config --global user.email "tu@email.com"</pre>
+
+        <label class="check">
+          <input type="checkbox" data-step="3-3">
+          <span>Configurar <strong>user.name</strong> en la terminal</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="3-4">
+          <span>Configurar <strong>user.email</strong> (usar el mismo email que en GitHub)</span>
+        </label>
+
+        <div class="note">
+          <p>Para verificar: <code>git config --global --list</code></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CLONAR REPO -->
     <section class="item" id="s4">
-      <h2 class="item-title">4 &middot; Configurar Cloudflare y DNS</h2>
+      <h2 class="item-title">4 &middot; Clonar el repo desde VSCode</h2>
+      <div class="content">
+        <p>Clonar = descargar una copia del repositorio a tu ordenador. Desde VSCode es lo más cómodo.</p>
+
+        <label class="check">
+          <input type="checkbox" data-step="4-1">
+          <span>En VSCode, abrir la paleta de comandos: <code>Ctrl+Shift+P</code> (o <code>Cmd+Shift+P</code> en Mac)</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="4-2">
+          <span>Escribir <strong>Git: Clone</strong> y seleccionarlo</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="4-3">
+          <span>Pegar la URL del repo (la copias del botón verde <strong>Code</strong> en GitHub)</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="4-4">
+          <span>Elegir <strong>dónde guardar la carpeta</strong> en tu ordenador (ej: Documentos)</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="4-5">
+          <span>Cuando VSCode pida autenticación, <strong>iniciar sesión con GitHub</strong> a través del navegador</span>
+        </label>
+
+        <div class="note">
+          <p>VSCode abre una ventana del navegador para autenticarte con tu cuenta de GitHub. Es más fácil que usar tokens.</p>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" data-step="4-6">
+          <span>Aceptar <strong>"Open"</strong> cuando VSCode pregunte si abrir la carpeta clonada</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- 5. CARGAR ARCHIVOS -->
+    <section class="item" id="s5">
+      <h2 class="item-title">5 &middot; Cargar los archivos del sitio</h2>
+      <div class="content">
+        <p>Ahora que la carpeta está abierta en VSCode, toca meter los archivos de la web.</p>
+
+        <label class="check">
+          <input type="checkbox" data-step="5-1">
+          <span>Copiar los archivos del sitio (<code>index.html</code>, CSS, imágenes…) dentro de la carpeta del repo</span>
+        </label>
+
+        <div class="note">
+          <p>Puedes arrastrar los archivos directamente al panel Explorer de VSCode, o copiarlos desde el Finder / Explorador de archivos.</p>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" data-step="5-2">
+          <span>Verificar en el Explorer de VSCode que los archivos aparecen correctamente</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- 6. LIVE SERVER -->
+    <section class="item" id="s6">
+      <h2 class="item-title">6 &middot; Probar en local con Live Server</h2>
+      <div class="content">
+        <p>Antes de subir nada, comprobamos que la web funciona bien en tu ordenador.</p>
+
+        <h3>Instalar la extensión</h3>
+
+        <label class="check">
+          <input type="checkbox" data-step="6-1">
+          <span>Click en el icono de <strong>Extensions</strong> (cuadraditos) en la barra lateral</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="6-2">
+          <span>Buscar <strong>Live Server</strong> &rarr; click en <strong>Install</strong></span>
+        </label>
+
+        <h3>Previsualizar el sitio</h3>
+
+        <label class="check">
+          <input type="checkbox" data-step="6-3">
+          <span>Click derecho en <code>index.html</code> &rarr; <strong>"Open with Live Server"</strong></span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="6-4">
+          <span>Verificar que la web se ve correctamente en el navegador</span>
+        </label>
+
+        <div class="note">
+          <p>Live Server abre el navegador y recarga automáticamente cada vez que guardas un archivo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. PRIMER PUSH -->
+    <section class="item" id="s7">
+      <h2 class="item-title">7 &middot; Primer commit y push</h2>
+      <div class="content">
+        <p>Todo funciona en local &mdash; toca subir los archivos a GitHub.</p>
+
+        <label class="check">
+          <input type="checkbox" data-step="7-1">
+          <span>Ir al panel <strong>Source Control</strong> (icono de ramitas)</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="7-2">
+          <span>Los archivos nuevos aparecen listados. Click en <strong>+</strong> para añadirlos al stage</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="7-3">
+          <span>Escribir un mensaje de commit (ej: "primer deploy")</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="7-4">
+          <span>Click en el botón <strong>Commit</strong></span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="7-5">
+          <span>Click en <strong>Sync Changes</strong> (o <strong>Push</strong>) para subir a GitHub</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="7-6">
+          <span>Ir a GitHub y comprobar que los archivos están en el repo</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- 8. GITHUB PAGES -->
+    <section class="item" id="s8">
+      <h2 class="item-title">8 &middot; Activar GitHub Pages</h2>
+      <div class="content">
+        <p>Ahora que el código está en GitHub, lo convertimos en un sitio web.</p>
+
+        <label class="check">
+          <input type="checkbox" data-step="8-1">
+          <span>Ir a <strong>Settings</strong> del repo (pestaña de arriba)</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="8-2">
+          <span>En el menú lateral, click en <strong>Pages</strong></span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="8-3">
+          <span>En <strong>Source</strong>, seleccionar <strong>Deploy from a branch</strong></span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="8-4">
+          <span>Rama: <strong>main</strong>, carpeta: <strong>/ (root)</strong> &rarr; <strong>Save</strong></span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="8-5">
+          <span>Esperar 1-2 minutos y refrescar &mdash; aparecerá la URL <code>usuario.github.io/mi-sitio</code></span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="8-6">
+          <span>Verificar que el sitio se ve correctamente en esa URL</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- 9. DOMINIO PERSONALIZADO -->
+    <section class="item" id="s9">
+      <h2 class="item-title">9 &middot; Configurar dominio personalizado</h2>
+      <div class="content">
+        <p>Si tienes un dominio propio, lo conectamos aquí.</p>
+
+        <label class="check">
+          <input type="checkbox" data-step="9-1">
+          <span>En <strong>Settings &rarr; Pages</strong>, escribir tu dominio en <strong>Custom domain</strong></span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="9-2">
+          <span>Click en <strong>Save</strong></span>
+        </label>
+
+        <div class="note">
+          <p>"Enforce HTTPS" aparecerá en gris hasta que los DNS estén configurados (paso 10). Volveremos a activarlo al final.</p>
+        </div>
+
+        <div class="note">
+          <p>Al guardar el dominio, GitHub crea automáticamente un archivo <code>CNAME</code> en el repo. <strong>No lo borres</strong> &mdash; es necesario para que el dominio funcione.</p>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" data-step="9-3">
+          <span>En VSCode, hacer <code>git pull</code> (o <strong>Sync</strong>) para traer el archivo <code>CNAME</code> a tu copia local</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- 10. CLOUDFLARE + DNS -->
+    <section class="item" id="s10">
+      <h2 class="item-title">10 &middot; Configurar Cloudflare y DNS</h2>
       <div class="content">
         <p>Cloudflare gestiona los DNS y añade una capa de seguridad y rendimiento a tu sitio.</p>
 
         <h3>Añadir el sitio a Cloudflare</h3>
 
         <label class="check">
-          <input type="checkbox" data-step="4-1">
+          <input type="checkbox" data-step="10-1">
           <span>Entrar en <strong>dash.cloudflare.com</strong> (crear cuenta si no la tienes)</span>
         </label>
 
         <label class="check">
-          <input type="checkbox" data-step="4-2">
+          <input type="checkbox" data-step="10-2">
           <span>Click en <strong>Add a site</strong>, escribir tu dominio</span>
         </label>
 
         <label class="check">
-          <input type="checkbox" data-step="4-3">
+          <input type="checkbox" data-step="10-3">
           <span>Seleccionar el plan <strong>Free</strong></span>
         </label>
 
-        <h3>Cambiar nameservers</h3>
+        <h3>Si el dominio se compró en Cloudflare</h3>
+        <p>Los nameservers ya están configurados. Solo necesitas limpiar los registros DNS que vengan por defecto.</p>
 
         <label class="check">
-          <input type="checkbox" data-step="4-4">
+          <input type="checkbox" data-step="10-4a">
+          <span>Ir a <strong>DNS &rarr; Records</strong> y <strong>borrar</strong> los registros que vengan por defecto (A, AAAA, CNAME…)</span>
+        </label>
+
+        <h3>Si el dominio se compró en otro registrador</h3>
+        <p>Hay que apuntar los nameservers a Cloudflare y limpiar los registros importados.</p>
+
+        <label class="check">
+          <input type="checkbox" data-step="10-4b">
+          <span>Cloudflare importará registros del proveedor anterior &mdash; <strong>revisar y borrar</strong> los que no necesites</span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="10-5">
           <span>Cloudflare te dará 2 nameservers (ej: <code>anna.ns.cloudflare.com</code>)</span>
         </label>
 
         <label class="check">
-          <input type="checkbox" data-step="4-5">
+          <input type="checkbox" data-step="10-6">
           <span>Ir al panel de tu <strong>registrador de dominio</strong> (donde compraste el dominio)</span>
         </label>
 
         <label class="check">
-          <input type="checkbox" data-step="4-6">
+          <input type="checkbox" data-step="10-7">
           <span>Cambiar los nameservers actuales por los de Cloudflare</span>
         </label>
 
         <label class="check">
-          <input type="checkbox" data-step="4-7">
+          <input type="checkbox" data-step="10-8">
           <span>Esperar propagación (puede tardar hasta 24h, normalmente minutos)</span>
         </label>
 
@@ -197,30 +451,6 @@
                 <td>DNS only</td>
               </tr>
               <tr>
-                <td><code>AAAA</code></td>
-                <td><code>@</code></td>
-                <td><code>2606:50c0:8000::153</code></td>
-                <td>DNS only</td>
-              </tr>
-              <tr>
-                <td><code>AAAA</code></td>
-                <td><code>@</code></td>
-                <td><code>2606:50c0:8001::153</code></td>
-                <td>DNS only</td>
-              </tr>
-              <tr>
-                <td><code>AAAA</code></td>
-                <td><code>@</code></td>
-                <td><code>2606:50c0:8002::153</code></td>
-                <td>DNS only</td>
-              </tr>
-              <tr>
-                <td><code>AAAA</code></td>
-                <td><code>@</code></td>
-                <td><code>2606:50c0:8003::153</code></td>
-                <td>DNS only</td>
-              </tr>
-              <tr>
                 <td><code>CNAME</code></td>
                 <td><code>www</code></td>
                 <td><code>usuario.github.io</code></td>
@@ -235,267 +465,66 @@
         </div>
 
         <label class="check">
-          <input type="checkbox" data-step="4-8">
+          <input type="checkbox" data-step="10-9">
           <span>Añadir los 4 registros <strong>A</strong></span>
         </label>
 
         <label class="check">
-          <input type="checkbox" data-step="4-9">
-          <span>Añadir los 4 registros <strong>AAAA</strong></span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="4-10">
+          <input type="checkbox" data-step="10-10">
           <span>Añadir el registro <strong>CNAME</strong> para <code>www</code> apuntando a <code>usuario.github.io</code></span>
         </label>
 
         <label class="check">
-          <input type="checkbox" data-step="4-11">
+          <input type="checkbox" data-step="10-11">
           <span>Verificar que todos los registros tienen <strong>proxy desactivado</strong> (nube gris)</span>
         </label>
 
-        <h3>Configuración SSL en Cloudflare</h3>
+        <h3>Verificar HTTPS</h3>
+
+        <div class="note">
+          <p>Con el proxy desactivado (DNS only), la configuración SSL/TLS de Cloudflare no tiene efecto &mdash; el certificado lo gestiona GitHub directamente. Si en algún momento activas el proxy, asegúrate de que SSL/TLS esté en modo <strong>Full</strong>.</p>
+        </div>
 
         <label class="check">
-          <input type="checkbox" data-step="4-12">
-          <span>Ir a <strong>SSL/TLS</strong> en Cloudflare y poner modo <strong>Full</strong></span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="4-13">
-          <span>Volver a GitHub &rarr; Settings &rarr; Pages y verificar que <strong>Enforce HTTPS</strong> está activo</span>
-        </label>
-      </div>
-    </section>
-
-    <!-- 5. INSTALAR VSCODE -->
-    <section class="item" id="s5">
-      <h2 class="item-title">5 &middot; Instalar Visual Studio Code</h2>
-      <div class="content">
-        <p>VSCode es el editor de código que usaremos para editar los archivos del sitio.</p>
-
-        <label class="check">
-          <input type="checkbox" data-step="5-1">
-          <span>Descargar desde <strong>code.visualstudio.com</strong></span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="5-2">
-          <span>Instalar (en Mac: arrastrar a Aplicaciones)</span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="5-3">
-          <span>Abrir VSCode</span>
-        </label>
-
-        <h3>Extensiones recomendadas</h3>
-
-        <label class="check">
-          <input type="checkbox" data-step="5-4">
-          <span>Instalar <strong>Live Server</strong> (para previsualizar cambios en el navegador)</span>
+          <input type="checkbox" data-step="10-12">
+          <span>Volver a GitHub &rarr; Settings &rarr; Pages y marcar <strong>Enforce HTTPS</strong></span>
         </label>
 
         <div class="note">
-          <p>Para instalar extensiones: click en el icono de cuadraditos de la barra lateral &rarr; buscar el nombre &rarr; Install.</p>
+          <p>Si aún aparece en gris, espera unos minutos a que los DNS propaguen y refresca la página.</p>
         </div>
       </div>
     </section>
 
-    <!-- 6. INSTALAR GIT -->
-    <section class="item" id="s6">
-      <h2 class="item-title">6 &middot; Instalar y configurar Git</h2>
+    <!-- 11. FLUJO DE TRABAJO -->
+    <section class="item" id="s11">
+      <h2 class="item-title">11 &middot; Flujo de trabajo para futuros cambios</h2>
       <div class="content">
-        <p>Git es la herramienta que permite subir los cambios al repositorio de GitHub.</p>
+        <p>A partir de ahora, cada vez que quieras modificar algo en la web:</p>
 
         <label class="check">
-          <input type="checkbox" data-step="6-1">
-          <span>Descargar desde <strong>git-scm.com</strong> (en Mac suele venir preinstalado)</span>
+          <input type="checkbox" data-step="11-1">
+          <span>Abrir la carpeta del proyecto en VSCode</span>
         </label>
 
         <label class="check">
-          <input type="checkbox" data-step="6-2">
-          <span>Instalar con las opciones por defecto</span>
-        </label>
-
-        <h3>Configurar identidad</h3>
-        <p>Abrir la <strong>terminal</strong> (en VSCode: <code>Ctrl+Ñ</code> o <code>Cmd+Ñ</code> en Mac) y ejecutar:</p>
-
-        <pre class="mono">git config --global user.name "Tu Nombre"
-git config --global user.email "tu@email.com"</pre>
-
-        <label class="check">
-          <input type="checkbox" data-step="6-3">
-          <span>Configurar <strong>user.name</strong> en la terminal</span>
+          <input type="checkbox" data-step="11-2">
+          <span>Editar los archivos que necesites</span>
         </label>
 
         <label class="check">
-          <input type="checkbox" data-step="6-4">
-          <span>Configurar <strong>user.email</strong> (usar el mismo email que en GitHub)</span>
-        </label>
-
-        <div class="note">
-          <p>Para verificar que está bien configurado: <code>git config --global --list</code></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. CLONAR REPO -->
-    <section class="item" id="s7">
-      <h2 class="item-title">7 &middot; Clonar el repo y abrir en VSCode</h2>
-      <div class="content">
-        <p>Clonar = descargar una copia del repositorio a tu ordenador para poder editarlo.</p>
-
-        <label class="check">
-          <input type="checkbox" data-step="7-1">
-          <span>En GitHub, click en el botón verde <strong>Code</strong> &rarr; copiar la URL HTTPS</span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="7-2">
-          <span>En la terminal de VSCode, navegar a donde quieras guardar el proyecto</span>
-        </label>
-
-        <pre class="mono">cd ~/Documents
-git clone https://github.com/usuario/mi-sitio.git</pre>
-
-        <label class="check">
-          <input type="checkbox" data-step="7-3">
-          <span>Ejecutar <code>git clone</code> con la URL copiada</span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="7-4">
-          <span>En VSCode: <strong>File &rarr; Open Folder</strong> &rarr; seleccionar la carpeta clonada</span>
-        </label>
-      </div>
-    </section>
-
-    <!-- 8. VSCODE BARRA LATERAL -->
-    <section class="item" id="s8">
-      <h2 class="item-title">8 &middot; Orientarse en VSCode</h2>
-      <div class="content">
-        <p>La barra lateral izquierda de VSCode tiene varios iconos. No todos son relevantes ahora mismo.</p>
-
-        <h3>Iconos importantes</h3>
-        <div class="icon-list">
-          <div class="icon-item important">
-            <span class="icon-badge yes">usar</span>
-            <strong>Explorer (ficheros)</strong>
-            <span class="muted">&mdash; primer icono. Aquí ves y abres los archivos del proyecto.</span>
-          </div>
-          <div class="icon-item important">
-            <span class="icon-badge yes">usar</span>
-            <strong>Search (buscar)</strong>
-            <span class="muted">&mdash; lupa. Útil para buscar texto en todo el proyecto.</span>
-          </div>
-          <div class="icon-item important">
-            <span class="icon-badge yes">usar</span>
-            <strong>Source Control (Git)</strong>
-            <span class="muted">&mdash; el icono con ramitas. Desde aquí haces commit y subes cambios.</span>
-          </div>
-          <div class="icon-item important">
-            <span class="icon-badge yes">usar</span>
-            <strong>Extensions</strong>
-            <span class="muted">&mdash; cuadraditos. Para instalar Live Server y otras extensiones.</span>
-          </div>
-        </div>
-
-        <h3>Iconos que puedes ignorar (por ahora)</h3>
-        <div class="icon-list">
-          <div class="icon-item ignore">
-            <span class="icon-badge no">ignorar</span>
-            <strong>Run and Debug</strong>
-            <span class="muted">&mdash; el play con un bug. Para depurar código, no lo necesitas.</span>
-          </div>
-          <div class="icon-item ignore">
-            <span class="icon-badge no">ignorar</span>
-            <strong>Testing</strong>
-            <span class="muted">&mdash; matraz/probeta. Para tests automatizados.</span>
-          </div>
-          <div class="icon-item ignore">
-            <span class="icon-badge no">ignorar</span>
-            <strong>Accounts</strong>
-            <span class="muted">&mdash; persona. Sincronización de ajustes, no necesario.</span>
-          </div>
-          <div class="icon-item ignore">
-            <span class="icon-badge no">ignorar</span>
-            <strong>Settings (engranaje)</strong>
-            <span class="muted">&mdash; abajo del todo. Solo si necesitas cambiar algo específico.</span>
-          </div>
-        </div>
-
-        <label class="check">
-          <input type="checkbox" data-step="8-1">
-          <span>Identificar el panel <strong>Explorer</strong> y ver los archivos del proyecto</span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="8-2">
-          <span>Identificar el panel <strong>Source Control</strong> (lo usaremos para subir cambios)</span>
-        </label>
-      </div>
-    </section>
-
-    <!-- 9. EDITAR CONTENIDO -->
-    <section class="item" id="s9">
-      <h2 class="item-title">9 &middot; Editar el contenido y subir cambios</h2>
-      <div class="content">
-        <p>El flujo de trabajo básico: editar archivos &rarr; guardar &rarr; commit &rarr; push.</p>
-
-        <h3>Editar archivos</h3>
-
-        <label class="check">
-          <input type="checkbox" data-step="9-1">
-          <span>Abrir el archivo que quieras editar (ej: <code>index.html</code>) desde el Explorer</span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="9-2">
-          <span>Hacer los cambios necesarios en el editor</span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="9-3">
+          <input type="checkbox" data-step="11-3">
           <span>Guardar: <code>Ctrl+S</code> (o <code>Cmd+S</code> en Mac)</span>
         </label>
 
-        <h3>Previsualizar con Live Server</h3>
-
         <label class="check">
-          <input type="checkbox" data-step="9-4">
-          <span>Click derecho en <code>index.html</code> &rarr; <strong>"Open with Live Server"</strong></span>
-        </label>
-
-        <div class="note">
-          <p>Live Server abre el navegador y recarga automáticamente cada vez que guardas.</p>
-        </div>
-
-        <h3>Subir cambios a GitHub</h3>
-
-        <label class="check">
-          <input type="checkbox" data-step="9-5">
-          <span>Ir al panel <strong>Source Control</strong> (icono de ramitas)</span>
+          <input type="checkbox" data-step="11-4">
+          <span>Previsualizar con Live Server para comprobar los cambios</span>
         </label>
 
         <label class="check">
-          <input type="checkbox" data-step="9-6">
-          <span>Los archivos modificados aparecen listados. Click en <strong>+</strong> para añadirlos al stage</span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="9-7">
-          <span>Escribir un mensaje de commit (ej: "actualizar textos")</span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="9-8">
-          <span>Click en el botón <strong>Commit</strong></span>
-        </label>
-
-        <label class="check">
-          <input type="checkbox" data-step="9-9">
-          <span>Click en <strong>Sync Changes</strong> (o <strong>Push</strong>) para subir a GitHub</span>
+          <input type="checkbox" data-step="11-5">
+          <span>Source Control &rarr; <strong>+</strong> &rarr; mensaje &rarr; <strong>Commit</strong> &rarr; <strong>Sync Changes</strong></span>
         </label>
 
         <div class="note">
@@ -504,28 +533,33 @@ git clone https://github.com/usuario/mi-sitio.git</pre>
       </div>
     </section>
 
-    <!-- 10. CHECKLIST FINAL / FAQ -->
-    <section class="item" id="s10">
-      <h2 class="item-title">10 &middot; Checklist final y problemas comunes</h2>
+    <!-- 12. CHECKLIST FINAL / FAQ -->
+    <section class="item" id="s12">
+      <h2 class="item-title">12 &middot; Checklist final y problemas comunes</h2>
       <div class="content">
 
         <label class="check">
-          <input type="checkbox" data-step="10-1">
+          <input type="checkbox" data-step="12-1">
           <span>La página se ve correctamente en <code>usuario.github.io/mi-sitio</code></span>
         </label>
 
         <label class="check">
-          <input type="checkbox" data-step="10-2">
-          <span>La página carga con el dominio personalizado</span>
+          <input type="checkbox" data-step="12-2">
+          <span>La página carga con el dominio personalizado (<code>tudominio.com</code>)</span>
         </label>
 
         <label class="check">
-          <input type="checkbox" data-step="10-3">
+          <input type="checkbox" data-step="12-3">
+          <span>La página también carga con <code>www.tudominio.com</code></span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" data-step="12-4">
           <span>El candado HTTPS aparece en el navegador</span>
         </label>
 
         <label class="check">
-          <input type="checkbox" data-step="10-4">
+          <input type="checkbox" data-step="12-5">
           <span>Puedo editar, hacer commit y push desde VSCode</span>
         </label>
 
@@ -546,8 +580,9 @@ git clone https://github.com/usuario/mi-sitio.git</pre>
             <summary>"El dominio personalizado no funciona"</summary>
             <ul>
               <li>Comprueba que los nameservers de Cloudflare están activos en tu registrador</li>
-              <li>Verifica los registros DNS (tabla de la sección 4)</li>
+              <li>Verifica los registros DNS (tabla de la sección 10)</li>
               <li>Asegúrate de que el proxy de Cloudflare está <strong>desactivado</strong> (nube gris)</li>
+              <li>Comprueba que el archivo <code>CNAME</code> existe en el repo y contiene tu dominio</li>
               <li>Espera propagación DNS (hasta 24h)</li>
             </ul>
           </details>
@@ -557,7 +592,7 @@ git clone https://github.com/usuario/mi-sitio.git</pre>
             <ul>
               <li>Los DNS aún no han propagado &mdash; espera y refresca</li>
               <li>Verifica que el dominio en "Custom domain" está bien escrito</li>
-              <li>Comprueba que SSL/TLS en Cloudflare está en modo <strong>Full</strong></li>
+              <li>Comprueba que los registros DNS apuntan a las IPs correctas de GitHub</li>
             </ul>
           </details>
 
@@ -577,6 +612,7 @@ git clone https://github.com/usuario/mi-sitio.git</pre>
               <li>Ve a GitHub &rarr; Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Tokens (classic)</li>
               <li>Genera un token con permisos de <strong>repo</strong></li>
               <li>Usa ese token como contraseña cuando Git te lo pida</li>
+              <li>Alternativa más fácil: en VSCode, usa el botón de <strong>Sign in with GitHub</strong> que abre el navegador</li>
             </ul>
           </details>
 
@@ -587,6 +623,16 @@ git clone https://github.com/usuario/mi-sitio.git</pre>
               <li>En Mac, abre la Terminal y escribe <code>git --version</code> &mdash; si no está, instala Xcode Command Line Tools con <code>xcode-select --install</code></li>
             </ul>
           </details>
+
+          <details>
+            <summary>"He borrado el archivo CNAME sin querer"</summary>
+            <ul>
+              <li>Ve a GitHub &rarr; Settings &rarr; Pages</li>
+              <li>Vuelve a escribir tu dominio en <strong>Custom domain</strong> y dale a Save</li>
+              <li>GitHub recreará el archivo <code>CNAME</code> automáticamente</li>
+              <li>Haz <code>git pull</code> en VSCode para traer el archivo a tu copia local</li>
+            </ul>
+          </details>
         </div>
 
       </div>
@@ -594,17 +640,13 @@ git clone https://github.com/usuario/mi-sitio.git</pre>
 
   </section>
 
-  <!-- RESTART BUTTON -->
+  <!-- RESTART -->
   <div class="restart-wrap">
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
-      <span class="progress-text" id="progressText">0 / 0</span>
-    </div>
     <button class="restart-btn" id="restartBtn">Reiniciar checklist</button>
   </div>
 
   <footer class="footer">
-    <p class="sig">hecho con cariño por <strong>meowrhino.studio</strong></p>
+    <a href="https://meowrhino.studio" class="sig" target="_blank" rel="noopener">meowrhino.studio</a>
   </footer>
 
 </main>
@@ -613,10 +655,7 @@ git clone https://github.com/usuario/mi-sitio.git</pre>
 (function () {
   const STORAGE_KEY = 'guiaSetup_checks';
   const checks = document.querySelectorAll('input[type="checkbox"][data-step]');
-  const fill = document.getElementById('progressFill');
-  const text = document.getElementById('progressText');
   const btn = document.getElementById('restartBtn');
-  const total = checks.length;
 
   // Load saved state
   function load() {
@@ -637,39 +676,20 @@ git clone https://github.com/usuario/mi-sitio.git</pre>
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }
 
-  // Update progress
-  function updateProgress() {
-    const done = document.querySelectorAll('input[type="checkbox"][data-step]:checked').length;
-    const pct = total ? Math.round((done / total) * 100) : 0;
-    fill.style.width = pct + '%';
-    text.textContent = done + ' / ' + total;
-
-    if (done === total && total > 0) {
-      fill.classList.add('complete');
-    } else {
-      fill.classList.remove('complete');
-    }
-  }
-
   // Events
   checks.forEach(cb => {
-    cb.addEventListener('change', () => {
-      save();
-      updateProgress();
-    });
+    cb.addEventListener('change', () => { save(); });
   });
 
   btn.addEventListener('click', () => {
     if (!confirm('¿Reiniciar todos los checks? Se perderá el progreso.')) return;
     checks.forEach(cb => { cb.checked = false; });
     localStorage.removeItem(STORAGE_KEY);
-    updateProgress();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
   // Init
   load();
-  updateProgress();
 })();
 </script>
 
